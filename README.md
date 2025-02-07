@@ -39,6 +39,7 @@ python -m app.main
 - [Product Requirements Document](docs/PRD.md)
 - [Contributing Guidelines](docs/CONTRIBUTING.md)
 - [Development Rules](docs/DEVELOPMENT_RULES.md)
+- [Development Plan](docs/DEVELOPMENT_PLAN.md)
 
 ## Development
 
