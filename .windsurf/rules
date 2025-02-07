@@ -1,0 +1,99 @@
+# Windsurf Rules for AI Accounting Job Matching Bot
+
+## Project Context
+- Project is an AI-powered job matching system for accounting professionals
+- Uses a shared PostgreSQL database with accountingfirmjobs.com
+- Implements both development and production Telegram bots
+
+## Module Boundaries
+ENFORCE:
+- Keep modules separate and focused:
+  - app/main.py: Application entry point
+  - app/config.py: Central configuration
+  - app/database.py: Database operations
+  - app/telegram_bot.py: Bot implementation
+  - app/ai_handler.py: AI processing
+  - app/cv_processor.py: CV handling
+  - app/embeddings.py: Vector operations
+  - app/admin_dashboard.py: Monitoring interface
+
+## Code Style
+ENFORCE:
+- Use async/await for I/O operations
+- Include type hints for all functions
+- Follow PEP 8 guidelines
+- Add comprehensive docstrings
+- Use structured JSON logging
+
+## Database Rules
+ENFORCE:
+- Use SQLAlchemy async engine
+- Preserve existing accountingfirmjobs.com data
+- Make backward-compatible schema changes
+- Include error handling for all DB operations
+- Log database operations with context
+
+## Error Handling
+ENFORCE:
+- Wrap critical operations in try/except
+- Include detailed error context in logs
+- Provide user-friendly fallback responses
+- Handle background task errors gracefully
+
+## Security
+ENFORCE:
+- Load sensitive data from environment variables
+- Mask sensitive information in logs
+- Validate all inputs
+- Use proper authentication
+- Follow OWASP guidelines
+
+## Testing
+ENFORCE:
+- Write unit tests for new features
+- Include integration tests
+- Test database migrations
+- Verify data preservation
+- Use pytest and pytest-asyncio
+
+## Documentation
+ENFORCE:
+- Keep PRD.md updated
+- Document API endpoints
+- Include inline comments
+- Maintain clear README
+- Update DEVELOPMENT_RULES.md
+
+## Configuration
+ENFORCE:
+- Use central config module
+- Support dual bot environments
+- Load from .env file
+- Never commit sensitive data
+
+## Logging
+ENFORCE:
+- Use structured JSON format
+- Include context in log entries
+- Filter sensitive information
+- Use appropriate log levels
+- Log performance metrics
+
+## Version Control
+ENFORCE:
+- Clear commit messages
+- Feature branch workflow
+- No sensitive data in commits
+- Peer review requirements
+
+## Background Tasks
+ENFORCE:
+- Isolate from main API
+- Include comprehensive logging
+- Handle errors without stopping
+- Track performance metrics
+
+## References
+- See docs/PRD.md for full requirements
+- See docs/DEVELOPMENT_RULES.md for detailed guidelines
+- See docs/CONTRIBUTING.md for contribution workflow
