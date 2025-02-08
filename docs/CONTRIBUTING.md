@@ -179,7 +179,31 @@ logger.info("Processing CV", extra={
     "file_type": cv_file.content_type,
     # Don't log the actual file content or sensitive user data
 })
-```
+
+## Database Requirements
+
+### Vector Type
+
+The application uses PostgreSQL's `pgvector` extension for storing and querying embeddings. The following requirements must be met:
+
+1. **PostgreSQL Setup**:
+   - PostgreSQL must have the `pgvector` extension installed
+   - The extension must be enabled in the database: `CREATE EXTENSION IF NOT EXISTS vector;`
+
+2. **Embedding Dimensions**:
+   - All embeddings must be 1536-dimensional vectors (OpenAI's text-embedding-ada-002 model)
+   - The `Job.embedding` column is defined as `vector(1536)`
+   - All vectors must have exactly 1536 dimensions to match the database schema
+
+3. **Vector Format**:
+   - Python lists are automatically converted to PostgreSQL vector format
+   - Example: `[0.1, 0.2, ..., 0.3]` → `[0.1,0.2,...,0.3]`
+   - The `Vector` type in `app.models.job` handles this conversion
+
+4. **Shared Database**:
+   - The database is shared with accountingfirmjobs.com
+   - Do not modify the vector column type or dimensions without coordination
+   - All changes must maintain backward compatibility
 
 ## Pull Request Process
 
